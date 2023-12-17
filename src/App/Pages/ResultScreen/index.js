@@ -16,7 +16,7 @@ const ResultCalender = () => {
         }
     },[dateofbirth])
     return (
-        <div className='text-left'>{`${dateob?.y} Years ${dateob?.m} Months ${dateob?.d} Days`}</div>
+        <div className='text-left'>{`Your Age is ${dateob?.y} Years ${dateob?.m} Months ${dateob?.d} Days`}</div>
     )
 }
 export default ResultCalender;
