@@ -1,6 +1,13 @@
 @import '../Styles/main.scss';
 .App {
   text-align: center;
+  background: var(--blue-90);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
 .App-logo {

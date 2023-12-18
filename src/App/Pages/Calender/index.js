@@ -1,17 +1,15 @@
-import { DatePicker } from "antd";
-import { useDispatch } from 'react-redux'
-
+import DobPicker from "./Component/DatePicker";
+import ResultCalender from "./Component/ResultScreen";
+import './Calender.scss';
 const Calender = () => {
-    const dispatch = useDispatch()
-    const onChange = (date, dateString) => {
-        dispatch({payload: dateString, type: 'calender/setCalenderDate',});
-    } 
-     return (
-        <div className="flex">
-            <DatePicker onChange={onChange} disabledDate={current => {
-          return current && current >= new Date();
-        }} />
-        </div>
-     )
+  return (
+    <div className="flex flex-col gap-2 page-container">      
+      <div><h1>Age Calculator</h1></div>
+      <div className="date-container">
+        <DobPicker />
+        <ResultCalender />
+      </div>
+    </div>
+  )
 }
 export default Calender;
