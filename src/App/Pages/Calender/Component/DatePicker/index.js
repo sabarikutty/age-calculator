@@ -11,7 +11,8 @@ const DobPicker = () => {
           <div>
             <DatePicker onChange={onChange} disabledDate={current => {
                 return current && current >= new Date();
-              }} />
+              }}
+              inputReadOnly   />
           </div>
             
         </div>
