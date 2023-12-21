@@ -2,6 +2,14 @@
     h1 {
         font-size: 2rem;
         font-weight: 500;
+        .odd-ani{
+            display: inline-block;
+            animation: moveUpDown 2s linear;
+        }
+        .even-ani{
+            display: inline-block;
+            animation: moveDownUp 2s linear;
+        }
     }
     .date-container{ 
         padding: 4rem;
@@ -13,16 +21,46 @@
         flex-direction: column;
         gap: 2rem;
     }
-    .spinning {
-        animation: spin 1s ease-out;
-        span {
+    .result-screen{
+        .spinning {        
             font-size: 1.5rem;
             font-weight: 500;
+            .rotate{
+                display: inline-block;
+                animation: spin 2s alternate;
+            }
         }
-      }
-  
-      @keyframes spin {
-        0% { transform: rotateY(0deg); }
-        100% { transform: rotateY(360deg); }
-      }
+      
+        @keyframes spin {
+            from {
+                transform: rotateX(0deg);
+            }
+            to {
+                transform: rotateX(360deg);
+            }
+        }
+        @keyframes moveUpDown {
+            20%, 50%, 80%, 100% {
+                transform: translateY(0);
+              }
+              0%, 40% {
+                transform: translateY(-20px);
+              }
+              60% {
+                transform: translateY(-10px);
+              }
+        }
+        @keyframes moveDownUp {
+            30%, 60%, 90%, 100% {
+                transform: translateY(0);
+              }
+              0%, 750% {
+                transform: translateY(-20px);
+              }
+              50%, 25% {
+                transform: translateY(-10px);
+              }
+        }
+    }
+    
 }

@@ -31,19 +31,24 @@ const ResultCalender = () => {
         }, 500);
         
     },[dateofbirth, noofDays])
-    return (
-        <div className='text-center'>
-            {(dateob && noOfDays) && <>
-            <p className='spinning'>
-                Your Age is
-                <span>{` ${dateob?.y} Years ${dateob?.m} Months ${dateob?.d > 1 ? `${dateob?.d} Days` : `1 Day` }`}</span>
-            </p>
-            <p className='spinning'>
-                No of Days
-                <span>{` ${noOfDays}`}</span>
-            </p>
-            </>}
-        </div>
+    return (        
+         (dateob && noOfDays) && 
+            <div className='result-screen'>
+                <p className=''>
+                    Your Age is&nbsp;
+                    <span className='spinning'>
+                        <span className='rotate'>{dateob?.y}</span> Years&nbsp;
+                        <span className='rotate'>{dateob?.m}</span> Months&nbsp;
+                        <span className='rotate'>{dateob?.d > 1 ? dateob?.d : 1}</span>Day(s)                   
+                    </span>
+                </p>
+                <p className=''>
+                    No of Days&nbsp;
+                    <span className='spinning'>
+                        <span className='rotate'>{noOfDays}</span>
+                    </span>
+                </p>            
+            </div>
     )
 }
 export default ResultCalender;
