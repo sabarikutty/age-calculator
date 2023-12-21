@@ -1,6 +1,16 @@
 @import '../Styles/main.scss';
+* {
+  box-sizing: border-box;
+}
 body {  
-  background: var(--blue-90);
+  background: var(--yellow-90);
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  background-image: url('../Assets/images/bg_image.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .App {
   text-align: center;

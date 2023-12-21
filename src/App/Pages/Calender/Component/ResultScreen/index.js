@@ -4,12 +4,22 @@ const ResultCalender = () => {
     const dateofbirth = useSelector(state => state.calender.date)
     const [dateob, setDateob] = useState(null)
     const [noOfDays, setNoOfDays] = useState(null)
-    const noofDays = useCallback((endDate, startDate) => {
+    const [noOfMonths, setNoOfMonths] = useState(null)
+    const [loading, setLoading] = useState(true)
+    const getNoofDays = useCallback((endDate, startDate) => {
         return Math.round((endDate -startDate) / (1000 * 60 * 60 * 24));
 
     },[])
+    const getNoofMonths = useCallback((endDate, startDate) => {
+        var months;
+        months = (endDate.getFullYear() - startDate.getFullYear()) * 12;
+        months -= startDate.getMonth() + 1;
+        months += endDate.getMonth() + 1;
+        return months <= 0 ? 0 : months;
+
+    },[])
     useEffect(() => {
-        setDateob(null)
+        setLoading(false)
         setTimeout(() => {
             if(dateofbirth) {
                 let d2 = new Date(dateofbirth);              
@@ -26,28 +36,27 @@ const ResultCalender = () => {
                     day = diff.getDate();
                 }
                 setDateob({y: year, m: month, d: day})
-                setNoOfDays(noofDays(d1, d2));
-            }  
+                setNoOfDays(getNoofDays(d1, d2));
+                setNoOfMonths(getNoofMonths(d1, d2));
+                setLoading(true);
+            } else {
+                setLoading(false);
+            }
         }, 500);
         
-    },[dateofbirth, noofDays])
+    },[dateofbirth, getNoofDays, getNoofMonths])
     return (        
-         (dateob && noOfDays) && 
-            <div className='result-screen'>
-                <p className=''>
-                    Your Age is&nbsp;
-                    <span className='spinning'>
-                        <span className='rotate'>{dateob?.y}</span> Years&nbsp;
-                        <span className='rotate'>{dateob?.m}</span> Months&nbsp;
-                        <span className='rotate'>{dateob?.d > 1 ? dateob?.d : 1}</span>Day(s)                   
-                    </span>
-                </p>
-                <p className=''>
-                    No of Days&nbsp;
-                    <span className='spinning'>
-                        <span className='rotate'>{noOfDays}</span>
-                    </span>
-                </p>            
+         (loading) && 
+            <div className='result-screen flex flex-col gap-[2rem]'>
+                <div className='spinning'>
+                    <p className='holder'><span className='rotate'>{dateob?.y}</span> Years&nbsp;</p>
+                    <p className='holder'><span className='rotate'>{dateob?.m}</span> Months&nbsp;</p>
+                    <p className='holder'><span className='rotate'>{dateob?.d > 1 ? dateob?.d : 1}</span>Day(s) </p>                  
+                </div>
+                <div className='spinning'>
+                    <p className='holder'><span className='rotate'>{noOfMonths}</span> Total Months&nbsp;</p>  
+                    <p className='holder'><span className='rotate'>{noOfDays}</span> Total Days&nbsp;</p>             
+                </div>
             </div>
     )
 }

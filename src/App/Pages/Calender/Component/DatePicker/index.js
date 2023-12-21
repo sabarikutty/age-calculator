@@ -9,9 +9,6 @@ const DobPicker = () => {
      return (
         <div className="flex gap-3">
           <div>
-              <label>Select Your Date of Birth</label>
-          </div>
-          <div>
             <DatePicker onChange={onChange} disabledDate={current => {
                 return current && current >= new Date();
               }} />

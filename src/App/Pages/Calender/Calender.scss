@@ -12,55 +12,76 @@
         }
     }
     .date-container{ 
-        padding: 4rem;
-        border: 1px solid #000;
+        padding: 3rem;
+        border: 1px solid var(--greay-10);
         box-shadow: 1rem 1rem 0.5rem 0rem #00000045;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
         gap: 2rem;
+        border-radius: 10px 50px;
+        .border {
+            width: 100%;
+            border-top: 2px solid var(--greay-10);
+        }
+        .result-screen{
+            .spinning {   
+                display: flex;   
+                gap: 1rem;
+                justify-content: space-evenly;
+                .holder{
+                    display: flex;
+                    flex-direction: column;
+                    border: 1px solid var(--black-0);
+                    box-shadow: 0rem 0rem 0.5rem 0.5rem var(--black-40);
+                    gap: 0.5rem;
+                    padding: 0.5rem;
+                    border: 1px solid; 
+                    width: 8rem;
+                    color: var(--greay-10);
+                    .rotate { 
+                        font-size: 1.5rem;
+                        font-weight: 500;
+                        display: inline-block;
+                        animation: spin 2s alternate;
+                        color: var(--black-0);;
+                    }
+                }           
+            }
+          
+            @keyframes spin {
+                from {
+                    transform: rotateX(0deg);
+                }
+                to {
+                    transform: rotateX(360deg);
+                }
+            }
+            @keyframes moveUpDown {
+                20%, 50%, 80%, 100% {
+                    transform: translateY(0);
+                  }
+                  0%, 40% {
+                    transform: translateY(-20px);
+                  }
+                  60% {
+                    transform: translateY(-10px);
+                  }
+            }
+            @keyframes moveDownUp {
+                30%, 60%, 90%, 100% {
+                    transform: translateY(0);
+                  }
+                  0%, 750% {
+                    transform: translateY(-20px);
+                  }
+                  50%, 25% {
+                    transform: translateY(-10px);
+                  }
+            }
+        }
     }
-    .result-screen{
-        .spinning {        
-            font-size: 1.5rem;
-            font-weight: 500;
-            .rotate{
-                display: inline-block;
-                animation: spin 2s alternate;
-            }
-        }
-      
-        @keyframes spin {
-            from {
-                transform: rotateX(0deg);
-            }
-            to {
-                transform: rotateX(360deg);
-            }
-        }
-        @keyframes moveUpDown {
-            20%, 50%, 80%, 100% {
-                transform: translateY(0);
-              }
-              0%, 40% {
-                transform: translateY(-20px);
-              }
-              60% {
-                transform: translateY(-10px);
-              }
-        }
-        @keyframes moveDownUp {
-            30%, 60%, 90%, 100% {
-                transform: translateY(0);
-              }
-              0%, 750% {
-                transform: translateY(-20px);
-              }
-              50%, 25% {
-                transform: translateY(-10px);
-              }
-        }
-    }
+    
     
 }
