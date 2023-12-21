@@ -1,8 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 const ResultCalender = () => {
     const dateofbirth = useSelector(state => state.calender.date)
     const [dateob, setDateob] = useState(null)
+    const [noOfDays, setNoOfDays] = useState(null)
+    const noofDays = useCallback((endDate, startDate) => {
+        return Math.round((endDate -startDate) / (1000 * 60 * 60 * 24));
+
+    },[])
     useEffect(() => {
         setDateob(null)
         setTimeout(() => {
@@ -21,15 +26,23 @@ const ResultCalender = () => {
                     day = diff.getDate();
                 }
                 setDateob({y: year, m: month, d: day})
+                setNoOfDays(noofDays(d1, d2));
             }  
         }, 500);
         
-    },[dateofbirth])
+    },[dateofbirth, noofDays])
     return (
         <div className='text-center'>
-            {dateob && <p className='spinning'>Your Age is
+            {(dateob && noOfDays) && <>
+            <p className='spinning'>
+                Your Age is
                 <span>{` ${dateob?.y} Years ${dateob?.m} Months ${dateob?.d > 1 ? `${dateob?.d} Days` : `1 Day` }`}</span>
-            </p>}
+            </p>
+            <p className='spinning'>
+                No of Days
+                <span>{` ${noOfDays}`}</span>
+            </p>
+            </>}
         </div>
     )
 }

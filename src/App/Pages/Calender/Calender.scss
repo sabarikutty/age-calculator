@@ -4,11 +4,14 @@
         font-weight: 500;
     }
     .date-container{ 
-        text-align: center;
-        line-height: 200px;
-        padding: 1rem;
+        padding: 4rem;
         border: 1px solid #000;
         box-shadow: 1rem 1rem 0.5rem 0rem #00000045;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 2rem;
     }
     .spinning {
         animation: spin 1s ease-out;
