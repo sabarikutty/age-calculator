@@ -1,13 +1,11 @@
 import './App.css';
 import Store from './Store/MainStore';
 import Calender from './Pages/Calender';
-import ResultCalender from './Pages/ResultScreen';
 function App() {
   return (
     <Store>
-      <div className="App">
+      <div className="App h-full">
         <Calender />
-        <ResultCalender />
       </div>  
     </Store>
   );
