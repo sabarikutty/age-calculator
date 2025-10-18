@@ -2,7 +2,7 @@
   "name": "age-calculator",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://sabarikutty.github.io/age-calculator",
+   "homepage": ".",
   "dependencies": {
     "@reduxjs/toolkit": "^2.0.1",
     "@testing-library/jest-dom": "^5.17.0",
