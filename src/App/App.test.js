@@ -3,6 +3,7 @@ import App from './App';
 
 test('renders learn react link', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const pageContainer = screen.getByTestId('page-container');
+  expect(pageContainer).toBeInTheDocument();
+  expect(pageContainer).toHaveClass('page-container');
 });
